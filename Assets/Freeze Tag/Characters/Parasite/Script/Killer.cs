@@ -28,14 +28,14 @@ public class Killer : MonoBehaviour {
    
     private float AttackTime;  //Number of attacks per second
     private float AttackRepeatTime = 8; // Number of attacks per second
-    /// <summary> End
- 
+                                        /// <summary> End
+
     /// <summary>
     /// //Player
     /// </summary>
     //Player Location
-    public GameObject Player;
-    public GameObject PlayerEyes;
+    private GameObject Player;
+    private GameObject PlayerEyes;
     private Transform PlayerTransform;
     private Transform PlayerEyesTransform;
     public Vector3 PlayersCurrentPoint;
@@ -60,10 +60,14 @@ public class Killer : MonoBehaviour {
         AttackAnimation = GetComponent<Animator>();     //Get refrence to object animation
         AudioChase = ChaseAudioObject.GetComponent<AudioSource>(); //Audio For Chase
 
+        Player = GameObject.Find("Survivor");
+        PlayerEyes = GameObject.Find("Survivor/Lindsey/mixamorig:Hips/PlayerEyes");
+
         //Positons of Killer and Player
         KillerTransform = transform; //cache transform data for easy access/preformance
         KillerEyesTransform = KillerEyes.transform; //cache transform data for easy access/preformance
         PlayerEyesTransform = PlayerEyes.transform; //target the player
+       
         PlayerTransform = Player.transform; //target the player
         KillerDestinationPoint = KillerTransform.position;   //Default search location
 
@@ -98,7 +102,7 @@ public class Killer : MonoBehaviour {
                     {
                         Patroling = false; //Patroling falg
                         CanSeePlayer = true;  //Flag Found
-                        NavigationMesh.speed = 4;//Killer Run
+                        NavigationMesh.speed = 5;//Killer Run
                         AudioChase.volume = 1; //Chase volume
 
                         if (!AudioChase.isPlaying)
@@ -199,7 +203,7 @@ public class Killer : MonoBehaviour {
     void SearchRandomPoint() //Patrol random area
     {
         Patroling = true; //Patroling falg
-        NavigationMesh.speed = 2; //Return to Patrol speed to normal if he was in a chase before
+        NavigationMesh.speed = 3; //Return to Patrol speed to normal if he was in a chase before
         AttackAnimation.SetBool("Walking",true);   //Walk Animation
 
         for (int i = 0; i < 30; i++)  //Find random point on mesh
