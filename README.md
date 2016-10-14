@@ -5,7 +5,7 @@ Stranded miles from civilization she finds a nearby farm house... What will you 
 
 ## Demonstration video
 
-This is a low qraphics quality version for debugging to focus on game concept and logic:
+This is a low graphics quality version for debugging to focus on game concept and logic:
 Video: <https://youtu.be/H2SA5lVcnns>
 
 ## How the code is setup
