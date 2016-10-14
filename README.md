@@ -1,6 +1,7 @@
 # UnityHorrorGame
 
-While returning to Illinois from Florida on spring break, Lindsay finds her self stranded after running out of gas. Stranded miles from civilization she finds a nearby farm house... What will you do next?
+While returning to Illinois from Florida on spring break, Lindsay finds her self stranded after running out of gas. 
+Stranded miles from civilization she finds a nearby farm house... What will you do next?
 
 ## Demonstration video
 
