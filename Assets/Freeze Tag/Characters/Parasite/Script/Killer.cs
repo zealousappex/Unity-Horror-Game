@@ -10,7 +10,6 @@ public class Killer : MonoBehaviour {
     private Transform KillerTransform;
     private Transform KillerEyesTransform;
     public GameObject KillerEyes;
-    public float KillerVisonRange = 100.0f;
     public Vector3 KillerLocationPoint;
 
     //Killer Navigation
@@ -60,7 +59,7 @@ public class Killer : MonoBehaviour {
         AttackAnimation = GetComponent<Animator>();     //Get refrence to object animation
         AudioChase = ChaseAudioObject.GetComponent<AudioSource>(); //Audio For Chase
 
-        Player = GameObject.Find("Survivor");
+        Player = GameObject.FindWithTag("Player");
         PlayerEyes = GameObject.Find("Survivor/Lindsey/mixamorig:Hips/PlayerEyes");
 
         //Positons of Killer and Player
@@ -71,10 +70,8 @@ public class Killer : MonoBehaviour {
         PlayerTransform = Player.transform; //target the player
         KillerDestinationPoint = KillerTransform.position;   //Default search location
 
-    }
-    void Start()  //Start
-    {
         SearchRandomPoint();  //Start Patrol
+
     }
     /// <summary> End
 
@@ -130,7 +127,7 @@ public class Killer : MonoBehaviour {
                             Debug.Log("Attack Player");
 
                         }
-                       
+
                     }
 
 
@@ -147,6 +144,10 @@ public class Killer : MonoBehaviour {
             }
 
 
+        }
+        else if (Input.GetKey(KeyCode.LeftShift))  //Player Running go to last run point<<<this needs work for noise awarness
+        {
+            NavigationMesh.destination = PlayerTransform.position; //Send Killer to Player current location or last spoted
         }
 
         if (NavigationMesh.remainingDistance < DestinationPointOffset & CanSeePlayer == false) //Choose the next destination point when the agent gets close to the current one

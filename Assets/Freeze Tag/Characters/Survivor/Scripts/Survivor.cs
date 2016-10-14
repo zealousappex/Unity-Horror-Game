@@ -21,10 +21,10 @@ public class Survivor : MonoBehaviour {
     // Bear trap Carring
     public GameObject BearTrapCarring;      // Bear trap Carring oject refrence 
     public AudioClip BearTrapCarringOpening;       // Bear trap Opening audio
-    public AudioSource BearTrapCarringAudio;       // Bear trap audio source
+    private AudioSource BearTrapCarringAudio;       // Bear trap audio source
 
     //Items Found
-    public GameObject GasCan;      // CollidedObject
+    public GameObject GasCanIcon;      // CollidedObject
     public bool GasCanFound = false;
 
     void Start()
@@ -40,16 +40,8 @@ public class Survivor : MonoBehaviour {
         // Bear trap on leg
         BearTrapOnLegScript = BearTrapOnLeg.GetComponent<BearTrapOnLegScript>();    // Reference to the Bear Trap On Leg
 
-
-        int maxSpawnObjects = 100;
-            for (int i = 1; i < maxSpawnObjects; i++)
-        {
-            Vector3 position = new Vector3(Random.Range(3.0F, 48.0F), 0, Random.Range(3.0F, 48.0F));
-            Instantiate(Resources.Load("BearTrap"), position, Quaternion.identity); // Create Bear trap object in front of user
-        }
-
         //Gascan                                                
-        GasCan.SetActive(false);  // Hide Gas Can in UI since they havent found it yet
+        GasCanIcon.SetActive(false);  // Hide Gas Can in UI since they havent found it yet
 
     }
 
@@ -129,7 +121,7 @@ public class Survivor : MonoBehaviour {
 
                     GasCanFound = true;
                     Destroy(other.gameObject);  //Remove collider object
-                    GasCan.SetActive(true);  // Show Gas Can in UI
+                    GasCanIcon.SetActive(true);  // Show Gas Can in UI
 
                     //Debug.Log(other.name + " Gascan");
 
